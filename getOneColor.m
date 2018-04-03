@@ -56,18 +56,18 @@ try
 	end 
 	
 	% Display the original image.
-	subplot(3, 4, 1);
-	hRGB = imshow(rgbImage);
+	%subplot(3, 4, 1);
+	%hRGB = imshow(rgbImage);
 	% Set up an infor panel so you can mouse around and inspect the value values.
 	hrgbPI = impixelinfo(hRGB);
 	set(hrgbPI, 'Units', 'Normalized', 'Position',[.15 .69 .15 .02]);
-	drawnow; % Make it display immediately. 
-	if numberOfColorBands > 1 
-		title('Original Color Image', 'FontSize', fontSize); 
-	else 
-		caption = sprintf('Original Indexed Image\n(converted to true color with its stored colormap)');
-		title(caption, 'FontSize', fontSize);
-	end
+	%drawnow; % Make it display immediately. 
+% 	if numberOfColorBands > 1 
+% 		title('Original Color Image', 'FontSize', fontSize); 
+% 	else 
+% 		caption = sprintf('Original Indexed Image\n(converted to true color with its stored colormap)');
+% 		title(caption, 'FontSize', fontSize);
+% 	end
 
 	% Convert RGB image to HSV
 	hsvImage = rgb2hsv(rgbImage);
@@ -77,80 +77,80 @@ try
 	vImage = hsvImage(:,:,3);
 	
 	% Display the hue image.
-	subplot(3, 4, 2);
-	h1 = imshow(hImage);
-	title('Hue Image', 'FontSize', fontSize);
-	% Set up an infor panel so you can mouse around and inspect the hue values.
-	hHuePI = impixelinfo(h1);
-	set(hHuePI, 'Units', 'Normalized', 'Position',[.34 .69 .15 .02]);
+% 	subplot(3, 4, 2);
+% 	h1 = imshow(hImage);
+% 	title('Hue Image', 'FontSize', fontSize);
+% 	% Set up an infor panel so you can mouse around and inspect the hue values.
+% 	hHuePI = impixelinfo(h1);
+% 	set(hHuePI, 'Units', 'Normalized', 'Position',[.34 .69 .15 .02]);
 	
 	% Display the saturation image.
-	h2 = subplot(3, 4, 3);
-	imshow(sImage);
-	title('Saturation Image', 'FontSize', fontSize);
-	% Set up an infor panel so you can mouse around and inspect the saturation values.
-	hSatPI = impixelinfo(h2);
-	set(hSatPI, 'Units', 'Normalized', 'Position',[.54 .69 .15 .02]);
+% 	h2 = subplot(3, 4, 3);
+% 	imshow(sImage);
+% 	title('Saturation Image', 'FontSize', fontSize);
+% 	% Set up an infor panel so you can mouse around and inspect the saturation values.
+% 	hSatPI = impixelinfo(h2);
+% 	set(hSatPI, 'Units', 'Normalized', 'Position',[.54 .69 .15 .02]);
 	
-	% Display the value image.
-	h3 = subplot(3, 4, 4);
-	imshow(vImage);
-	title('Value Image', 'FontSize', fontSize);
-	% Set up an infor panel so you can mouse around and inspect the value values.
-	hValuePI = impixelinfo(h3);
-	set(hValuePI, 'Units', 'Normalized', 'Position',[.75 .69 .15 .02]);
+% 	% Display the value image.
+% 	h3 = subplot(3, 4, 4);
+% 	imshow(vImage);
+% 	title('Value Image', 'FontSize', fontSize);
+% 	% Set up an infor panel so you can mouse around and inspect the value values.
+% 	hValuePI = impixelinfo(h3);
+% 	set(hValuePI, 'Units', 'Normalized', 'Position',[.75 .69 .15 .02]);
 
 	% Compute and plot the histogram of the "hue" band.
-	hHuePlot = subplot(3, 4, 6); 
+% 	hHuePlot = subplot(3, 4, 6); 
 	[hueCounts, hueBinValues] = imhist(hImage); 
 	maxHueBinValue = find(hueCounts > 0, 1, 'last'); 
 	maxCountHue = max(hueCounts); 
-	area(hueBinValues, hueCounts, 'FaceColor', 'r'); 
-	grid on; 
-	xlabel('Hue Value'); 
-	ylabel('Pixel Count'); 
-	title('Histogram of Hue Image', 'FontSize', fontSize);
+% 	area(hueBinValues, hueCounts, 'FaceColor', 'r'); 
+% 	grid on; 
+% 	xlabel('Hue Value'); 
+% 	ylabel('Pixel Count'); 
+% 	title('Histogram of Hue Image', 'FontSize', fontSize);
 
 	% Compute and plot the histogram of the "saturation" band.
-	hSaturationPlot = subplot(3, 4, 7); 
+% 	hSaturationPlot = subplot(3, 4, 7); 
 	[saturationCounts, saturationBinValues] = imhist(sImage); 
 	maxSaturationBinValue = find(saturationCounts > 0, 1, 'last'); 
 	maxCountSaturation = max(saturationCounts); 
-	area(saturationBinValues, saturationCounts, 'FaceColor', 'g'); 
-	grid on; 
-	xlabel('Saturation Value'); 
-	ylabel('Pixel Count'); 
-	title('Histogram of Saturation Image', 'FontSize', fontSize);
+% 	area(saturationBinValues, saturationCounts, 'FaceColor', 'g'); 
+% 	grid on; 
+% 	xlabel('Saturation Value'); 
+% 	ylabel('Pixel Count'); 
+% 	title('Histogram of Saturation Image', 'FontSize', fontSize);
 
 	% Compute and plot the histogram of the "value" band.
-	hValuePlot = subplot(3, 4, 8); 
+% 	hValuePlot = subplot(3, 4, 8); 
 	[valueCounts, valueBinValues] = imhist(vImage); 
 	maxValueBinValue = find(valueCounts > 0, 1, 'last'); 
 	maxCountValue = max(valueCounts); 
-	area(valueBinValues, valueCounts, 'FaceColor', 'b'); 
-	grid on; 
-	xlabel('Value Value'); 
-	ylabel('Pixel Count'); 
-	title('Histogram of Value Image', 'FontSize', fontSize);
+% 	area(valueBinValues, valueCounts, 'FaceColor', 'b'); 
+% 	grid on; 
+% 	xlabel('Value Value'); 
+% 	ylabel('Pixel Count'); 
+% 	title('Histogram of Value Image', 'FontSize', fontSize);
 
-	% Set all axes to be the same width and height.
-	% This makes it easier to compare them.
-	maxCount = max([maxCountHue,  maxCountSaturation, maxCountValue]); 
-	axis([hHuePlot hSaturationPlot hValuePlot], [0 1 0 maxCount]); 
+% 	% Set all axes to be the same width and height.
+% 	% This makes it easier to compare them.
+% 	maxCount = max([maxCountHue,  maxCountSaturation, maxCountValue]); 
+% 	axis([hHuePlot hSaturationPlot hValuePlot], [0 1 0 maxCount]); 
 
 	% Plot all 3 histograms in one plot.
-	subplot(3, 4, 5); 
-	plot(hueBinValues, hueCounts, 'r', 'LineWidth', 2); 
-	grid on; 
-	xlabel('Values'); 
-	ylabel('Pixel Count'); 
-	hold on; 
-	plot(saturationBinValues, saturationCounts, 'g', 'LineWidth', 2); 
-	plot(valueBinValues, valueCounts, 'b', 'LineWidth', 2); 
-	title('Histogram of All Bands', 'FontSize', fontSize); 
+% 	subplot(3, 4, 5); 
+% 	plot(hueBinValues, hueCounts, 'r', 'LineWidth', 2); 
+% 	grid on; 
+% 	xlabel('Values'); 
+% 	ylabel('Pixel Count'); 
+% 	hold on; 
+% 	plot(saturationBinValues, saturationCounts, 'g', 'LineWidth', 2); 
+% 	plot(valueBinValues, valueCounts, 'b', 'LineWidth', 2); 
+% 	title('Histogram of All Bands', 'FontSize', fontSize); 
 	maxGrayLevel = max([maxHueBinValue, maxSaturationBinValue, maxValueBinValue]); % Just for our information....
 	% Make x-axis to just the max gray level on the bright end. 
-	xlim([0 1]); 
+% 	xlim([0 1]); 
 
 	% Assign the low and high thresholds for each color band.
 % 	if strcmpi(reply2, 'My Own') || strcmpi(selectedImage, 'Kids') > 0
@@ -162,10 +162,10 @@ try
     valueThresholdLow = graythresh(vImage);
     valueThresholdHigh = 1.0;
     
-	% Show the thresholds as vertical magenta bars on the histograms.
-	PlaceThresholdBars(6, hueThresholdLow, hueThresholdHigh);
-	PlaceThresholdBars(7, saturationThresholdLow, saturationThresholdHigh);
-	PlaceThresholdBars(8, valueThresholdLow, valueThresholdHigh);
+% 	% Show the thresholds as vertical magenta bars on the histograms.
+% 	PlaceThresholdBars(6, hueThresholdLow, hueThresholdHigh);
+% 	PlaceThresholdBars(7, saturationThresholdLow, saturationThresholdHigh);
+% 	PlaceThresholdBars(8, valueThresholdLow, valueThresholdHigh);
 
 
 	% Now apply each color band's particular thresholds to the color band
@@ -174,23 +174,23 @@ try
 	valueMask = (vImage >= valueThresholdLow) & (vImage <= valueThresholdHigh);
 
 	% Display the thresholded binary images.
-	fontSize = 16;
-	subplot(3, 4, 10);
-	imshow(hueMask, []);
-	title('=   Hue Mask', 'FontSize', fontSize);
-	subplot(3, 4, 11);
-	imshow(saturationMask, []);
-	title('&   Saturation Mask', 'FontSize', fontSize);
-	subplot(3, 4, 12);
-	imshow(valueMask, []);
-	title('&   Value Mask', 'FontSize', fontSize);
+% 	fontSize = 16;
+% 	subplot(3, 4, 10);
+% 	imshow(hueMask, []);
+% 	title('=   Hue Mask', 'FontSize', fontSize);
+% 	subplot(3, 4, 11);
+% 	imshow(saturationMask, []);
+% 	title('&   Saturation Mask', 'FontSize', fontSize);
+% 	subplot(3, 4, 12);
+% 	imshow(valueMask, []);
+% 	title('&   Value Mask', 'FontSize', fontSize);
 	% Combine the masks to find where all 3 are "true."
 	% Then we will have the mask of only the red parts of the image.
 	coloredObjectsMask = uint8(hueMask & saturationMask & valueMask);
-	subplot(3, 4, 9);
-	imshow(coloredObjectsMask, []);
-	caption = sprintf('Mask of Only Regions\nof The Specified Color');
-	title(caption, 'FontSize', fontSize);
+% 	subplot(3, 4, 9);
+% 	imshow(coloredObjectsMask, []);
+% 	caption = sprintf('Mask of Only Regions\nof The Specified Color');
+% 	title(caption, 'FontSize', fontSize);
 
 	% Filter out small objects.
 	smallestAcceptableArea = 100; % Keep areas only if they're bigger than this.
@@ -199,29 +199,29 @@ try
 	% Open up a new figure, since the existing one is full.
 	figure;  
 	% Maximize the figure. 
-	set(gcf, 'units','normalized','outerposition',[0 0 1 1]);
+% 	set(gcf, 'units','normalized','outerposition',[0 0 1 1]);
 
 	% Get rid of small objects.  Note: bwareaopen returns a logical.
 	coloredObjectsMask = uint8(bwareaopen(coloredObjectsMask, smallestAcceptableArea));
-	subplot(3, 3, 1);
-	imshow(coloredObjectsMask, []);
-	fontSize = 13;
-	caption = sprintf('bwareaopen() removed objects\nsmaller than %d pixels', smallestAcceptableArea);
-	title(caption, 'FontSize', fontSize);
+% 	subplot(3, 3, 1);
+% 	imshow(coloredObjectsMask, []);
+% 	fontSize = 13;
+% 	caption = sprintf('bwareaopen() removed objects\nsmaller than %d pixels', smallestAcceptableArea);
+% 	title(caption, 'FontSize', fontSize);
 
 	% Smooth the border using a morphological closing operation, imclose().
 	structuringElement = strel('disk', 4);
 	coloredObjectsMask = imclose(coloredObjectsMask, structuringElement);
-	subplot(3, 3, 2);
-	imshow(coloredObjectsMask, []);
-	fontSize = 16;
-	title('Border smoothed', 'FontSize', fontSize);
+% 	subplot(3, 3, 2);
+% 	imshow(coloredObjectsMask, []);
+% 	fontSize = 16;
+% 	title('Border smoothed', 'FontSize', fontSize);
 
 	% Fill in any holes in the regions, since they are most likely red also.
 	coloredObjectsMask = imfill(logical(coloredObjectsMask), 'holes');
-	subplot(3, 3, 3);
-	imshow(coloredObjectsMask, []);
-	title('Regions Filled', 'FontSize', fontSize);
+% 	subplot(3, 3, 3);
+% 	imshow(coloredObjectsMask, []);
+% 	title('Regions Filled', 'FontSize', fontSize);
 
 	% You can only multiply integers if they are of the same type.
 	% (coloredObjectsMask is a logical array.)
@@ -234,29 +234,29 @@ try
 	maskedImageG = coloredObjectsMask .* rgbImage(:,:,2);
 	maskedImageB = coloredObjectsMask .* rgbImage(:,:,3);
 	% Show the masked off red image.
-	subplot(3, 3, 4);
-	imshow(maskedImageR);
-	title('Masked Red Image', 'FontSize', fontSize);
-	% Show the masked off saturation image.
-	subplot(3, 3, 5);
-	imshow(maskedImageG);
-	title('Masked Green Image', 'FontSize', fontSize);
-	% Show the masked off value image.
-	subplot(3, 3, 6);
-	imshow(maskedImageB);
-	title('Masked Blue Image', 'FontSize', fontSize);
+% 	subplot(3, 3, 4);
+% 	imshow(maskedImageR);
+% 	title('Masked Red Image', 'FontSize', fontSize);
+% 	% Show the masked off saturation image.
+% 	subplot(3, 3, 5);
+% 	imshow(maskedImageG);
+% 	title('Masked Green Image', 'FontSize', fontSize);
+% 	% Show the masked off value image.
+% 	subplot(3, 3, 6);
+% 	imshow(maskedImageB);
+% 	title('Masked Blue Image', 'FontSize', fontSize);
 	% Concatenate the masked color bands to form the rgb image.
 	maskedRGBImage = cat(3, maskedImageR, maskedImageG, maskedImageB);
-	% Show the masked off, original image.
-	subplot(3, 3, 8);
-	imshow(maskedRGBImage);
-	fontSize = 13;
-	caption = sprintf('Masked Original Image\nShowing Regions of Only the Specified Color');
-	title(caption, 'FontSize', fontSize);
-	% Show the original image next to it.
-	subplot(3, 3, 7);
-	imshow(rgbImage);
-	title('The Original Image (Again)', 'FontSize', fontSize);
+% 	% Show the masked off, original image.
+% 	subplot(3, 3, 8);
+% 	imshow(maskedRGBImage);
+% 	fontSize = 13;
+% 	caption = sprintf('Masked Original Image\nShowing Regions of Only the Specified Color');
+% 	title(caption, 'FontSize', fontSize);
+% 	% Show the original image next to it.
+% 	subplot(3, 3, 7);
+% 	imshow(rgbImage);
+% 	title('The Original Image (Again)', 'FontSize', fontSize);
 
 	% Measure the mean HSV and area of all the detected blobs.
 	[meanHSV, areas, numberOfBlobs] = MeasureBlobs(coloredObjectsMask, hImage, sImage, vImage);
