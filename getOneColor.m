@@ -26,7 +26,7 @@ try
 	end
 
     
-    fullImageFileName = 'G:\My Drive\Documents\Research\mikehess\paper1_baptistery\computervision\brick.jpg';
+    fullImageFileName = 'G:\My Drive\Documents\Research\mikehess\paper1_baptistery\computervision\wall.jpg';
 
 	% Read in image into an array.
 	[rgbImage, storedColorMap] = imread(fullImageFileName); 
