@@ -17,7 +17,7 @@ try
     % Do some initialization stuff.
 	close all;
 	fontSize = 16;
-	figure; 
+% 	figure; 
 
 	% Change the current folder to the folder of this m-file.
 	% (The line of code below is from Brett Shoelson of The Mathworks.)
@@ -59,9 +59,9 @@ try
 	%subplot(3, 4, 1);
 	%hRGB = imshow(rgbImage);
 	% Set up an infor panel so you can mouse around and inspect the value values.
-	hrgbPI = impixelinfo(hRGB);
-	set(hrgbPI, 'Units', 'Normalized', 'Position',[.15 .69 .15 .02]);
-	%drawnow; % Make it display immediately. 
+% 	hrgbPI = impixelinfo(hRGB);
+% % 	set(hrgbPI, 'Units', 'Normalized', 'Position',[.15 .69 .15 .02]);
+% 	drawnow; % Make it display immediately. 
 % 	if numberOfColorBands > 1 
 % 		title('Original Color Image', 'FontSize', fontSize); 
 % 	else 
@@ -197,7 +197,7 @@ try
 
 
 	% Open up a new figure, since the existing one is full.
-	figure;  
+% 	figure;  
 	% Maximize the figure. 
 % 	set(gcf, 'units','normalized','outerposition',[0 0 1 1]);
 
@@ -247,6 +247,7 @@ try
 % 	title('Masked Blue Image', 'FontSize', fontSize);
 	% Concatenate the masked color bands to form the rgb image.
 	maskedRGBImage = cat(3, maskedImageR, maskedImageG, maskedImageB);
+    imshow(maskedRGBImage);
 % 	% Show the masked off, original image.
 % 	subplot(3, 3, 8);
 % 	imshow(maskedRGBImage);
@@ -275,7 +276,7 @@ try
 		uiwait(msgbox(message));
 	end
 
-	subplot(3, 3, 9);
+% 	subplot(3, 3, 9);
 	
 catch ME
 	errorMessage = sprintf('Error in function %s() at line %d.\n\nError Message:\n%s', ...
