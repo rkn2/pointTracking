@@ -1,3 +1,5 @@
+%BASED ON https://www.mathworks.com/matlabcentral/fileexchange/28512-simplecolordetectionbyhue--
+
 % Demo macro to very, very simple color detection in 
 % HSV (Hue, Saturation, Value) color space.
 % Requires the Image Processing Toolbox.  Developed under MATLAB R2014a.
