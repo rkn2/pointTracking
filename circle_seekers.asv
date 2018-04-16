@@ -9,7 +9,7 @@
 % This example uses an image of round plastic chips of various colors.
 image = 'G:\My Drive\Documents\Research\mikehess\paper1_baptistery\computervision\wall2.jpg';
 rgb = imread(image);
-%figure;
+figure
 %imshow(rgb)
 
 %% 
@@ -30,7 +30,7 @@ rgb = imread(image);
 % way to find the appropriate radius range is to use the interactive tool
 % |imdistline| to get an approximate estimate of the radii of various
 % objects.
-%d = imdistline;
+d = imdistline;
 
 
 %% 
@@ -39,7 +39,7 @@ rgb = imread(image);
 % radius. Most chips have radius in the range of 21-23 pixels. Use a
 % slightly larger radius range of 20-25 pixels just to be sure. Before that
 % remove the |imdistline| tool.
-%delete(d);
+delete(d);
 
 %% Step 3: Initial Attempt to Find Circles
 % Call |imfindcircles| on this image with the search radius of [20 25]
@@ -53,7 +53,8 @@ rgb = imread(image);
 colorcloud(rgb, 'lab');
 labImage = rgb2lab(rgb);
 bImage = labImage(:,:,3);
-
+%figure;
+%imshow(bImage, []);
 
 
 %%
@@ -107,11 +108,13 @@ bImage = labImage(:,:,3);
 % radii seem to match well to the actual chips. But still quite a few
 % chips were missed. Try increasing the 'Sensitivity' even more, to 0.92.
 
-figure;
-imshow(bImage, []);
+%for original image
 [centers, radii] = imfindcircles(rgb,[5 10],'ObjectPolarity','dark', ...
    'Sensitivity',0.92111);
-title('radii [5 10] 0.92111')
+
+%for updated image
+% [centers, radii] = imfindcircles(rgb,[10 50],'ObjectPolarity','dark', ...
+%     'Sensitivity',0.93);
 
 length(centers)
 
