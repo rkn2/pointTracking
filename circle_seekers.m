@@ -7,10 +7,11 @@
 
 %% Step 1: Load Image
 % This example uses an image of round plastic chips of various colors.
-image = 'G:\My Drive\Documents\Research\mikehess\paper1_baptistery\computervision\wall2.jpg';
+%image = 'G:\My Drive\Documents\Research\mikehess\paper1_baptistery\computervision\wall2.jpg';
+image = 'C:\Users\Rebecca Napolitano\Documents\GitHub\imageProcessing\Gaussian.jpg';
 rgb = imread(image);
 %figure;
-%imshow(rgb)
+imshow(rgb)
 
 %% 
 % Besides having plenty of circles to detect, there are a few interesting
@@ -109,7 +110,7 @@ bImage = labImage(:,:,3);
 
 figure;
 imshow(bImage, []);
-[centers, radii] = imfindcircles(rgb,[5 10],'ObjectPolarity','dark', ...
+[centers, radii] = imfindcircles(rgb,[5 12],'ObjectPolarity','dark', ...
    'Sensitivity',0.92111);
 title('radii [5 10] 0.92111')
 

@@ -24,8 +24,8 @@ try
 	end
 
     
-    fullImageFileName = 'G:\My Drive\Documents\Research\mikehess\paper1_baptistery\computervision\brick.jpg';
-
+    %fullImageFileName = 'G:\My Drive\Documents\Research\mikehess\paper1_baptistery\computervision\brick.jpg';
+fullImageFileName = 'C:\Users\Rebecca Napolitano\Documents\GitHub\imageProcessing\Gaussian.jpg';
 	% Read in image into an array.
 	[rgbImage, storedColorMap] = imread(fullImageFileName); 
 	[rows, columns, numberOfColorBands] = size(rgbImage); 

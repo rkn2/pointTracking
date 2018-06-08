@@ -57,22 +57,27 @@ axis on;
 caption = sprintf('Normalized Cross Correlation Output, %d rows by %d columns.', rows, columns);
 title(caption, 'FontSize', fontSize);
 
-% Find out where the normalized cross correlation image is brightest.
-[maxCorrValue, maxIndex] = max(abs(correlationOutput(:)));
-[yPeak, xPeak] = ind2sub(size(correlationOutput),maxIndex(1))
-% Because cross correlation increases the size of the image, 
-% we need to shift back to find out where it would be in the original image.
-corr_offset = [(xPeak-size(smallSubImage,2)) (yPeak-size(smallSubImage,1))]
+% Find out where the normalized cross correlation image is brightest by
+% ordering them 
+k = 10;
+[maxCorrValue, maxIndex] = maxk(abs(correlationOutput(:)),k);
 
 % Plot it over the original image.
 subplot(2, 2, 4); % Re-display image in lower right.
 imshow(rgbImage);
 axis on; % Show tick marks giving pixels
-hold on; % Don't allow rectangle to blow away image.
-% Calculate the rectangle for the template box.  Rect = [xLeft, yTop, widthInColumns, heightInRows]
-boxRect = [corr_offset(1) corr_offset(2) templateWidth, templateHeight]
-% Plot the box over the image.
-rectangle('position', boxRect, 'edgecolor', 'g', 'linewidth',2);
+
+for i = 1:k
+    [yPeak, xPeak] = ind2sub(size(correlationOutput),maxIndex(i));
+    % Because cross correlation increases the size of the image, 
+    % we need to shift back to find out where it would be in the original image.
+    corr_offset = [(xPeak-size(smallSubImage,2)) (yPeak-size(smallSubImage,1))];
+    hold on; % Don't allow rectangle to blow away image.
+    % Calculate the rectangle for the template box.  Rect = [xLeft, yTop, widthInColumns, heightInRows]
+    boxRect = [corr_offset(1) corr_offset(2) templateWidth, templateHeight];
+    % Plot the box over the image.
+    rectangle('position', boxRect, 'edgecolor', 'g', 'linewidth',2);
+    
+end
 % Give a caption above the image.
 title('Template Image Found in Original Image', 'FontSize', fontSize);
-uiwait(helpdlg('Done with demo!'));
